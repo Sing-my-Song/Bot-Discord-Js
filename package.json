@@ -1,0 +1,27 @@
+{
+  "name": "Bot-Discord-Js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sing-my-Song/Bot-Discord-Js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sing-my-Song/Bot-Discord-Js/issues"
+  },
+  "homepage": "https://github.com/Sing-my-Song/Bot-Discord-Js#readme",
+  "dependencies": {
+    "@replit/database": "^2.0.1",
+    "discord": "^0.8.2",
+    "discord.js": "^12.5.1",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1"
+  }
+}
