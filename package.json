@@ -3,8 +3,21 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "dependencies": {
+    "@discordjs/opus": "^0.7.0",
+    "@replit/database": "^2.0.1",
+    "discord": "^0.8.2",
+    "discord.js": "^12.5.1",
+    "express": "^4.17.1",
+    "ffmpeg-static": "^4.4.0",
+    "node-fetch": "^2.6.1",
+    "yt-search": "^2.10.3",
+    "ytdl-core": "^4.9.2"
+  },
+  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -16,12 +29,5 @@
   "bugs": {
     "url": "https://github.com/Sing-my-Song/Bot-Discord-Js/issues"
   },
-  "homepage": "https://github.com/Sing-my-Song/Bot-Discord-Js#readme",
-  "dependencies": {
-    "@replit/database": "^2.0.1",
-    "discord": "^0.8.2",
-    "discord.js": "^12.5.1",
-    "express": "^4.17.1",
-    "node-fetch": "^2.6.1"
-  }
+  "homepage": "https://github.com/Sing-my-Song/Bot-Discord-Js#readme"
 }

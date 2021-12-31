@@ -2,7 +2,7 @@ const express = require("express");
 
 const server = express()
 
-server.all("/", (req, res) => {
+server.all("/", (_, res) => {
   res.send("Bot is running!")
 })
 
