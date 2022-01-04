@@ -1,7 +1,7 @@
 const Discord = require('discord.js')
 const fs = require('fs')
 const CONSTANTS = require('./utils/constants.js')
-// const keepAlive = require("./server.js")
+const keepAlive = require("./server.js")
 
 const PREFIX = '-'
 const client = new Discord.Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] })
@@ -24,14 +24,14 @@ client.on('message', (msg) => {
   const args = msg.content.substring(PREFIX.length).split(" ")
   const cmd = args.shift().toUpperCase()
   switch (cmd) {
-    case CONSTANTS.HI:
-      client.commands.get(CONSTANTS.HI).execute(msg, args)
+    case CONSTANTS.HELP: case CONSTANTS.H:
+      client.commands.get(CONSTANTS.HELP).execute(msg, args)
       break
     case CONSTANTS.CLEAR:
       client.commands.get(CONSTANTS.CLEAR).execute(msg, args)
       break;
     case CONSTANTS.PLAY:
-      client.commands.get(CONSTANTS.PLAY).execute(msg, args)
+      client.commands.get(CONSTANTS.PLAY).execute(msg, args, Discord)
       break;
     case CONSTANTS.STOP:
       client.commands.get(CONSTANTS.STOP).execute(msg, args)
@@ -40,7 +40,7 @@ client.on('message', (msg) => {
   }
 })
 
-// keep client running
-// keepAlive()
+// keep bot running
+keepAlive()
 
 client.login(process.env['TKN'])

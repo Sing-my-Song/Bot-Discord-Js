@@ -5,6 +5,6 @@ module.exports = {
   des: "Clear message!",
   execute(msg, args) {
       if (!args[0]) return msg.channel.send('Error!')
-      msg.channel.bulkDelete(args[0]).catch(console.log("Clear command is not working!"));
+      msg.channel.bulkDelete(args[0]).catch(console.error());
   }
 }

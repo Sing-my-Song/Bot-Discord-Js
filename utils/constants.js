@@ -1,5 +1,6 @@
 module.exports = Object.freeze({
-  HI: 'HI',
+  H: 'H',
+  HELP: 'HELP',
   CLEAR: 'CLEAR',
   PLAY: 'PLAY',
   LEAVE: 'LEAVE',

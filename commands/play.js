@@ -5,8 +5,10 @@ const { PLAY } = require('./../utils/constants.js')
 module.exports = {
   name: PLAY,
   des: 'Join and plays a video from youtube',
-  async execute(msg, args) {
+  async execute(msg, args, Discord) {
     const voiceChannel = msg.member.voice.channel
+    const msgEmbed = new Discord.MessageEmbed()
+      .setColor('#0099ff')
 
     if (!voiceChannel)
       return msg.channel.send('You need to be in a voice channel to execute this command!')
@@ -56,7 +58,13 @@ module.exports = {
       connection.play(stream, { seek: 0, volume: 1 }).on('finish', () => {
         voiceChannel.leave()
       })
-      await msg.reply(`:thumbsup: Now playing ***[${video.title}](${video.url})***`)
+      msgEmbed.setTitle(video.title)
+        .setURL(video.url)
+        .setFooter(`Video length: ${video.timestamp}`)
+
+      await msg.reply(":thumbsup: Now playing")
+      msg.channel.send(msgEmbed)
+
     } else {
       msg.channel.send("No video results found!")
     }
