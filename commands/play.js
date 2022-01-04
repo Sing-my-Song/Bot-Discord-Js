@@ -5,7 +5,7 @@ const { PLAY } = require('./../utils/constants.js')
 module.exports = {
   name: PLAY,
   des: 'Join and plays a video from youtube',
-  async execute(msg, args, Discord) {
+  async execute(_, msg, args, Discord) {
     const voiceChannel = msg.member.voice.channel
     const msgEmbed = new Discord.MessageEmbed()
       .setColor('#0099ff')

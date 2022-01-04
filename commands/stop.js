@@ -3,7 +3,7 @@ const { STOP } = require('./../utils/constants.js')
 module.exports = {
   name: STOP,
   des: 'Stop the bot and leave the channel',
-  async execute(msg, args) {
+  async execute(_, msg) {
     const voiceChannel = msg.member.voice.channel
 
     if (!voiceChannel)
