@@ -23,7 +23,7 @@ module.exports = (client, Discord, msg) => {
 
       if (current_time < expiration_time) {
         const time_left = (expiration_time - current_time) / 1000
-        return msg.reply(`Please wait ${time_left.toFixed(1)} more seconds before using ${command.name}`)
+        return msg.reply(`Please wait ${time_left.toFixed(1)} more seconds before using command! 😎`)
       }
     }
 
@@ -34,7 +34,7 @@ module.exports = (client, Discord, msg) => {
     command.execute(client, msg, args, cmd, Discord)
   }
   catch (err) {
-    msg.reply("There was an error trying to execute this command!")
+    msg.reply("There was an error trying to execute this command! 😢")
     console.log(err)
   }
 }

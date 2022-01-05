@@ -6,8 +6,8 @@ const queue = new Map()
 
 module.exports = {
   name: PLAY,
-  aliases: ['SKIP', "STOP"],
-  cooldown: 10,
+  aliases: ['P', 'SKIP', 'STOP', 'LIST', 'LS'],
+  cooldown: 3,
   des: 'Music from youtube!',
   async execute(_, msg, args, cmd, Discord) {
     const voiceChannel = msg.member.voice.channel
@@ -25,7 +25,7 @@ module.exports = {
     const server_queue = queue.get(msg.guild.id)
 
     switch (cmd) {
-      case PLAY:
+      case PLAY: case 'P':
         if (!args.length)
           return msg.channel.send("You need to send the second argument! **(-play ...)**")
         let song = {};
@@ -73,14 +73,14 @@ module.exports = {
           }
         } else {
           server_queue.songs.push(song)
-          return msg.channel.send(`:thumbsup: **${song.title}** added to queue!`)
+          return msg.channel.send(`👍 **${song.title}** added to queue!`)
         }
         break
-      case "SKIP":
-        skip_song(msg, server_queue)
+      case "SKIP": skip_song(msg, server_queue)
         break
-      case "STOP":
-        stop_song(msg, server_queue)
+      case "STOP": stop_song(msg, server_queue)
+        break
+      case "LIST": case "LS": list_song(msg, server_queue)
         break
       default:
         break
@@ -123,4 +123,14 @@ const stop_song = (msg, server_queue) => {
     return msg.channel.send('You need to be in a voice channel to execute this command!')
   server_queue.songs = []
   server_queue.connection.dispatcher.end()
+}
+
+const list_song = async (msg, server_queue) => {
+  if (!msg.member.voice.channel)
+    return msg.channel.send('You need to be in a voice channel to execute this command!')
+  if (!server_queue)
+    return msg.channel.send("There are no songs in queue 😅")
+  const res_list = "🔉 ***Playlist***\n" +
+    server_queue.songs.map((el) => `Song: *${el.title}* \nLength: *${el.timestamp} min* \n`)
+  return msg.channel.send(res_list.replace(",Song:", "Song:"))
 }
