@@ -11,6 +11,6 @@ module.exports = (client, Discord) => {
     }
   }
 
-  const event = ['client', 'guide']
+  const event = ['client', 'guild']
   event.forEach(e => load_dir(e))
 }
