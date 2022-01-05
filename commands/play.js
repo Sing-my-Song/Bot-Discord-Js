@@ -1,6 +1,7 @@
 const ytdl = require('ytdl-core');
 const ytSearch = require('yt-search');
 const { PLAY } = require('./../utils/constants.js')
+const { CONNECT, SPEAK } = require('./../utils/permissions.js')
 
 const queue = new Map()
 
@@ -17,9 +18,9 @@ module.exports = {
     if (!voiceChannel)
       return msg.channel.send('You need to be in a voice channel to execute this command!')
     const permissions = voiceChannel.permissionsFor(msg.client.user)
-    if (!permissions.has("CONNECT"))
+    if (!permissions.has(CONNECT))
       return msg.channel.send("You dont have the correct permissions!")
-    if (!permissions.has("SPEAK"))
+    if (!permissions.has(SPEAK))
       return msg.channel.send("You dont have the correct permissions!")
 
     const server_queue = queue.get(msg.guild.id)
@@ -121,8 +122,11 @@ const skip_song = (msg, server_queue) => {
 const stop_song = (msg, server_queue) => {
   if (!msg.member.voice.channel)
     return msg.channel.send('You need to be in a voice channel to execute this command!')
-  server_queue.songs = []
-  server_queue.connection.dispatcher.end()
+  if (server_queue) {
+    server_queue.songs = []
+    server_queue.connection.dispatcher.end()
+  }
+  return msg.channel.send("Stop playing music 😅")
 }
 
 const list_song = async (msg, server_queue) => {
@@ -132,5 +136,5 @@ const list_song = async (msg, server_queue) => {
     return msg.channel.send("There are no songs in queue 😅")
   const res_list = "🔉 ***Playlist***\n" +
     server_queue.songs.map((el) => `Song: *${el.title}* \nLength: *${el.timestamp} min* \n`)
-  return msg.channel.send(res_list.replace(",Song:", "Song:"))
+  return msg.channel.send(res_list.replaceAll(",Song:", "Song:"))
 }

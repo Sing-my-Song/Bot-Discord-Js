@@ -1,4 +1,5 @@
 const cooldowns = new Map()
+const PERMISSIONS = require('./../../utils/permissions.js')
 
 module.exports = (client, Discord, msg) => {
   const PREFIX = '-'
@@ -9,26 +10,43 @@ module.exports = (client, Discord, msg) => {
 
   const command = client.commands.get(cmd) ||
     client.commands.find(a => a.aliases && a.aliases.includes(cmd))
+
   if (command) {
-    if (!cooldowns.has(command.name)) {
-      cooldowns.set(command.name, new Discord.Collection())
-    }
-
-    const current_time = Date.now()
-    const time_stamps = cooldowns.get(command.name)
-    const cooldown_amount = command.cooldown * 1000
-
-    if (time_stamps.has(msg.author.id)) {
-      const expiration_time = time_stamps.get(msg.author.id) + cooldown_amount
-
-      if (current_time < expiration_time) {
-        const time_left = (expiration_time - current_time) / 1000
-        return msg.reply(`Please wait ${time_left.toFixed(1)} more seconds before using command! 😎`)
+    if (command.permissions && command.permissions.length) {
+      let invalidPer = []
+      for (const per of command.permissions) {
+        if (!PERMISSIONS.hasOwnProperty(per)) return console.log("Invalid Permission!")
+        if (!msg.member.hasPermission(per)) {
+          invalidPer.push(per)
+          break
+        }
+      }
+      if (invalidPer.length) {
+        return msg.channel.send(`Missing permission: \` ${invalidPer}\``)
       }
     }
 
-    time_stamps.set(msg.author.id, current_time)
-    setTimeout(() => time_stamps.delete(msg.author.id), cooldown_amount)
+    if (command.cooldown) {
+      if (!cooldowns.has(command.name)) {
+        cooldowns.set(command.name, new Discord.Collection())
+      }
+
+      const current_time = Date.now()
+      const time_stamps = cooldowns.get(command.name)
+      const cooldown_amount = command.cooldown * 1000
+
+      if (time_stamps.has(msg.author.id)) {
+        const expiration_time = time_stamps.get(msg.author.id) + cooldown_amount
+
+        if (current_time < expiration_time) {
+          const time_left = (expiration_time - current_time) / 1000
+          return msg.reply(`Please wait ${time_left.toFixed(1)} more seconds before using command! 😎`)
+        }
+      }
+
+      time_stamps.set(msg.author.id, current_time)
+      setTimeout(() => time_stamps.delete(msg.author.id), cooldown_amount)
+    }
   }
   try {
     command.execute(client, msg, args, cmd, Discord)
