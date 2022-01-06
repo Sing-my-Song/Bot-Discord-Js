@@ -4,5 +4,6 @@ module.exports = Object.freeze({
   PLAY: 'PLAY',
   LEAVE: 'LEAVE',
   STOP: 'STOP',
-  IMAGE:'IMAGE'
+  IMAGE: 'IMAGE',
+  DOG_FACTS: 'DOG_FACTS'
 });
