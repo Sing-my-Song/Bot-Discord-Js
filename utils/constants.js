@@ -5,5 +5,6 @@ module.exports = Object.freeze({
   LEAVE: 'LEAVE',
   STOP: 'STOP',
   IMAGE: 'IMAGE',
+  CAT_FACTS: 'CAT_FACTS',
   DOG_FACTS: 'DOG_FACTS'
 });

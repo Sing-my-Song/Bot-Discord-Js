@@ -9,7 +9,8 @@ module.exports = {
     -play <keyword> : *play music* 🎶
     -skip : *skip song* ⏭
     -stop : *stop music* ⏹
-    -df <number>(0<number<10) : *some facts about dog* 🐕‍🦺
+    -df <number> : *some facts about dog* 🐕‍🦺
+    -cf <number> : *some facts about cat* ‍🐈
     `)
   }
 }

@@ -8,6 +8,16 @@ const getDogFacts = (number = 1) => fetch(`https://dog-api.kinduff.com/api/facts
     return data
   })
 
-module.exports= {
-  getDogFacts
+const getCatFacts = (number = 1) => fetch(`https://cat-fact.herokuapp.com/facts/random?amount=${number}`)
+  .then(res => {
+    return res.json()
+  })
+  .then(data => {
+    return data
+  })
+
+
+
+module.exports = {
+  getDogFacts, getCatFacts
 }

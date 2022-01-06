@@ -14,7 +14,7 @@ module.exports = {
     } else if (+args[0] < 10 && +args[0] > 0) {
       res = await getDogFacts(args[0])
     } else {
-      msg.channel.send("Please enter right command: -df <number>(0<number<10)")
+      msg.channel.send("Please enter right command: -df <number>(0<number<10) 🤣")
     }
     if (res && res.facts) {
       res.facts.forEach((el) => {
