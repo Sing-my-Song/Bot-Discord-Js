@@ -11,6 +11,7 @@ module.exports = {
     -stop : *stop music* ⏹
     -df <number> : *some facts about dog* 🐕‍🦺
     -cf <number> : *some facts about cat* ‍🐈
+    -cat : *random cat pictures* ‍🐈
     `)
   }
 }

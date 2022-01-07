@@ -16,8 +16,8 @@ const getCatFacts = (number = 1) => fetch(`https://cat-fact.herokuapp.com/facts/
     return data
   })
 
-
+const getCatPics = () => fetch(`https://thatcopy.pw/catapi/rest/`).then(res => res.json())
 
 module.exports = {
-  getDogFacts, getCatFacts
+  getDogFacts, getCatFacts, getCatPics
 }
