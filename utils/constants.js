@@ -7,5 +7,6 @@ module.exports = Object.freeze({
   IMAGE: 'IMAGE',
   DOG_FACTS: 'DOG_FACTS',
   CAT_FACTS: 'CAT_FACTS',
-  CAT_PICS: 'CAT_PICS'
+  CAT_PICS: 'CAT_PICS',
+  ANIME_QUOTES: 'ANIME_QUOTES'
 });

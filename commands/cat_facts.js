@@ -3,7 +3,7 @@ const { getCatFacts } = require('./../utils/fetch_api')
 
 module.exports = {
   name: CAT_FACTS,
-  aliases: ['CF', "CAT-FACT", "FACT-CAT"],
+  aliases: ['CF', "CATFACT", "FACTCAT"],
   des: "Get some facts of cat!",
   async execute(client, msg, args, cmd, Discord) {
     const msgEmbed = new Discord.MessageEmbed()

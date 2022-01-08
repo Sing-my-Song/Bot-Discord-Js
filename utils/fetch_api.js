@@ -18,6 +18,9 @@ const getCatFacts = (number = 1) => fetch(`https://cat-fact.herokuapp.com/facts/
 
 const getCatPics = () => fetch(`https://thatcopy.pw/catapi/rest/`).then(res => res.json())
 
+const getAnimeQuotes = (a = "", c = "") => fetch(`https://animechan.vercel.app/api/random${a ? "/anime?title=" + a : ""}${c ? "/character?name=" + c : ""}`)
+  .then(res => res.json()).then(data => data)
+
 module.exports = {
-  getDogFacts, getCatFacts, getCatPics
+  getDogFacts, getCatFacts, getCatPics, getAnimeQuotes
 }

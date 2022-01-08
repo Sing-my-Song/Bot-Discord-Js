@@ -6,6 +6,7 @@ module.exports = {
   des: "Help command!",
   execute(_, msg) {
     msg.reply(`🎱 ***Help command*** 🎱:
+    -animeq : *anime random quotes* 🐱‍👓
     -play <keyword> : *play music* 🎶
     -skip : *skip song* ⏭
     -stop : *stop music* ⏹

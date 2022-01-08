@@ -3,7 +3,7 @@ const { getCatPics } = require('./../utils/fetch_api')
 
 module.exports = {
   name: CAT_PICS,
-  aliases: ['CAT', 'CAT-PIC', 'PIC-CAT'],
+  aliases: ['CAT', 'CATPIC', 'PICCAT'],
   des: "Cat as a service (cats pictures and gifs)",
   async execute(client, msg, args, cmd, Discord) {
     const msgEmbed = new Discord.MessageEmbed()
