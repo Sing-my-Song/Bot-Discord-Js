@@ -16,7 +16,7 @@ module.exports = (client, Discord, msg) => {
       let invalidPer = []
       for (const per of command.permissions) {
         if (!PERMISSIONS.hasOwnProperty(per)) return console.log("Invalid Permission!")
-        if (!msg.member.hasPermission(per)) {
+        if (msg.member && !msg.member.hasPermission(per)) {
           invalidPer.push(per)
           break
         }

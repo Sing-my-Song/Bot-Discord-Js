@@ -13,6 +13,7 @@ module.exports = {
     -df <number> : *some facts about dog* 🐕‍🦺
     -cf <number> : *some facts about cat* ‍🐈
     -cat : *random cat pictures* ‍🐈
+    -cr <ht | th>: *encryption and decryption* 🎴
     `)
   }
 }

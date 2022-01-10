@@ -8,5 +8,6 @@ module.exports = Object.freeze({
   DOG_FACTS: 'DOG_FACTS',
   CAT_FACTS: 'CAT_FACTS',
   CAT_PICS: 'CAT_PICS',
-  ANIME_QUOTES: 'ANIME_QUOTES'
+  ANIME_QUOTES: 'ANIME_QUOTES',
+  HEX_TEXT:'HEX_TEXT'
 });
